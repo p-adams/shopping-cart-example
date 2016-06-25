@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div id="app">
+        <h1>Shopping Cart Example</h1><hr>
+        <div class="container">
+            <div class="jumbotron">
+                <div id="cart">
+                 <h3>Cart <span class="glyphicon glyphicon-shopping-cart">{{inCart}}</span></h3>
+                <span v-for="item in itemInCart">
+                    Item: {{item.name}}<br>
+                    Total: {{total}}<br>
+                    Quantity: {{inCart}}<br>
+                    <button
+                        class="btn btn-default"
+                        @click="remove(item)"
+                        >Remove</button>
+                </span>
+                </div>
+            </div>
+        </div>
+      
+        <div class="container">
+            <div class="jumbotron">
+                <div id="product">
+                <span v-for="item in items">
+                    <h3>Product</h3>
+                    Item: {{item.name}}<br>
+                    Price: {{item.price}}<br>
+                    Quantity: {{inStock > 0 ? inStock : 'Out of Stock'}}<br>
+                    <button
+                        class="btn btn-primary"
+                        :disabled="inStock===0"
+                        @click="addToCart(item)">
+                        Add to Cart
+                    </button>
+                </span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
